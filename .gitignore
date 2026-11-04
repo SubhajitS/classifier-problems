@@ -1,0 +1,16 @@
+# Python artifacts
+__pycache__/
+*.py[cod]
+*$py.class
+*.ipynb_checkpoints/
+
+# Virtual Environment
+venv/
+env/
+.env
+
+# System artifacts
+.DS_Store
+Thumbs.db
+
+.idea
