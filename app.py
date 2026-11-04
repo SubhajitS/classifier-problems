@@ -23,7 +23,7 @@ def get_artifacts():
     return preprocessor, label_encoder
 
 st.title("Teen Digital Wellbeing Multi-Class Classifier")
-st.markdown("Evaluate classification models on the **Teen Mental Health** dataset.")
+st.caption("M.Tech (AIML) Machine Learning Assignment 2 | **Subhajit Saha** (BITS ID: 2026AJ05497)")
 
 # Sidebar Controls
 st.sidebar.header("Configuration")
@@ -39,10 +39,19 @@ if uploaded_file is not None:
     st.sidebar.success("Custom test file uploaded!")
 elif os.path.exists("test_data.csv"):
     test_df = pd.read_csv("test_data.csv")
-    st.sidebar.info("Using default 'test_data.csv'")
+    st.sidebar.info("Using default 'test_data.csv' from repo")
 else:
-    st.error("No test data found. Upload a test CSV or run prepare_data.py first.")
-    st.stop()
+    st.sidebar.info("No test data found. Upload a test CSV.")
+    #st.stop()
+
+st.sidebar.link_button(
+    label="View GitHub Repo",
+    url="https://github.com/SubhajitS/classifier-problems",
+    use_container_width=True
+)
+
+st.sidebar.markdown("---")
+st.sidebar.caption("👨‍💻 **Student:** Subhajit Saha  \n🆔 **BITS ID:** 2026AJ05497  \n🏛️ **BITS Pilani (WILP)**")
 
 # Clean input columns
 test_df.columns = test_df.columns.str.strip().str.lower().str.replace(" ", "_")
@@ -104,8 +113,30 @@ with col_left:
     st.pyplot(fig)
 
 with col_right:
-    st.subheader("Classification Report")
+    st.subheader("Class-Wise Performance")
     from sklearn.metrics import classification_report
-    report_dict = classification_report(y_test, y_pred, target_names=label_encoder.classes_, output_dict=True, zero_division=0)
+
+    report_dict = classification_report(
+        y_test,
+        y_pred,
+        target_names=label_encoder.classes_,
+        output_dict=True,
+        zero_division=0
+    )
     report_df = pd.DataFrame(report_dict).transpose()
-    st.dataframe(report_df.style.format("{:.3f}"))
+
+    # 1. Filter exclusively for actual class rows
+    # 2. Drop the redundant 'support' column
+    clean_report_df = report_df.loc[
+        label_encoder.classes_,
+        ["precision", "recall", "f1-score"]
+    ]
+
+    # Clean up column headers
+    clean_report_df.columns = ["Precision", "Recall", "F1 Score"]
+
+    # Display clean table formatted to 4 decimals
+    st.dataframe(
+        clean_report_df.style.format("{:.4f}"),
+        use_container_width=True
+    )

@@ -31,11 +31,23 @@ The objective of this project is to build a machine learning classification pipe
 
 ## e. Observations on Model Performance
 
-| ML Model Name | Observation about model performance                                                                                                                                                                                                                                |
-| :--- |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
-| **Logistic Regression** | Performed strongly (~85.8% accuracy), indicating that simple linear combinations of digital habits and sleep hours are highly predictive of the wellbeing status.                                                                                                  |
-| **Decision Tree** | Achieved a perfect 1.0000 across all metrics. Because this is a possible synthetic dataset. Which means the target was possibly generated using hard-coded threshold rules (if/else conditions), which the decision tree effortlessly and perfectly reconstructed. |
-| **KNN** | Scored decently (~82.9% accuracy) but struggled compared to linear models because distance-based nearest-neighbor voting blurs near the sharp threshold cutoff borders separating the classes.                                                                     |
-| **Naive Bayes** | Showed the poorest performance (~46.2% accuracy). The assumption of independent features completely failed here, as features like `sleep_hours`, `screen_time_before_sleep`, and `daily_social_media_hours` are highly correlated.                                 |
-| **Support Vector Machine** | Achieved the highest performance among non-tree models (~86.2% accuracy, ~0.967 AUC). The RBF kernel successfully navigated the non-linear boundaries but could not draw the perfectly rectangular axis-aligned splits that exist in the synthetic dataset.        |
-| **Overall, Winner for your dataset?** | Although **Decision Tree** is the technical winner on this specific synthetic dataset. However, **Support Vector Machine (SVM)** is the most realistic and robust model for generalizing to messy, real-world survey data.                                         |
+| ML Model Name | Observation about model performance                                                                                                                                                                                                                                               |
+| :--- |:----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Logistic Regression** | Performed strongly (~85.8% accuracy & F1, +0.732 MCC), indicating that simple linear combinations of digital habits and sleep hours are highly predictive of the wellbeing status.                                                                                                |
+| **Decision Tree** | Achieved a perfect 1.0000 across all metrics. Because this is a possible synthetic dataset. Which means the target was possibly generated using hard-coded threshold rules (if/else conditions), which the decision tree effortlessly and perfectly reconstructed.                |
+| **KNN** | Scored decently (~82.9% accuracy) but struggled compared to linear models because distance-based nearest-neighbor voting blurs near the sharp threshold cutoff borders separating the classes.                                                                                    |
+| **Naive Bayes** | Showed the poorest performance (~46.2% accuracy). The assumption of independent features completely failed here, as features like `sleep_hours`, `screen_time_before_sleep`, and `daily_social_media_hours` are highly correlated.                                                |
+| **Support Vector Machine** | Achieved the highest performance among non-tree models (~86.2% accuracy and F1, ~0.967 AUC and +0.739 MCC). The RBF kernel successfully navigated the non-linear boundaries but could not draw the perfectly rectangular axis-aligned splits that exist in the synthetic dataset. |
+| **Overall, Winner for your dataset?** | Although **Decision Tree** is the technical winner on this specific synthetic dataset. However, **Support Vector Machine (SVM)** is the most realistic and robust model for generalizing to messy, real-world survey data.                                                        |
+
+## f. Developer/ Evaluator notes
+
+**Teen_Mental_Health.csv**: Unstratified raw data from kaggle. Used during the training phase to produce [train_data_internal.csv](model/train_data_internal.csv) and [test_data.csv](/test_data.csv) for training and testing respectively.
+
+**test_data.csv**: Should be used to test the models in the Streamlit app
+
+**train_all.py**: Run the preprocessing and training of the data with following command ``python train_all.py``
+
+**app.py**: Runs the streamlit application using command ``streamlit run app.py``
+
+**utils.py**: Contains utility methods used by preprocessing and training data 

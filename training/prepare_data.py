@@ -32,7 +32,7 @@ def prepare():
 
     # Save test_data.csv to root for evaluation and Streamlit upload
     test_df.to_csv("test_data.csv", index=False)
-    train_df.to_csv("../model/train_data_internal.csv", index=False)
+    train_df.to_csv("model/train_data_internal.csv", index=False)
     print(f"Saved test_data.csv ({len(test_df)} samples) and internal train split ({len(train_df)} samples)")
 
     # 4. Fit Feature Encoders & Scalers

@@ -39,10 +39,9 @@ def run_all():
     ]
 
     print("\n" + "="*75)
-    print("Step 5 Markdown Comparison Table for README.md:")
+    print("Step 5 Comparison Table")
     print("="*75)
     print(df_results)
-    #print(df_results.to_markdown(index=False))
 
 if __name__ == "__main__":
     run_all()
