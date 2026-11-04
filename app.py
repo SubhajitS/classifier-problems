@@ -23,7 +23,7 @@ def get_artifacts():
     return preprocessor, label_encoder
 
 st.title("Teen Digital Wellbeing Multi-Class Classifier")
-st.caption("M.Tech (AIML) Machine Learning Assignment 2 | **Subhajit Saha** (BITS ID: 2026AJ05497)")
+st.caption("M.Tech (AIML) Machine Learning Assignment 2 | **Subhajit Saha**")
 
 # Sidebar Controls
 st.sidebar.header("Configuration")
@@ -42,7 +42,7 @@ elif os.path.exists("test_data.csv"):
     st.sidebar.info("Using default 'test_data.csv' from repo")
 else:
     st.sidebar.info("No test data found. Upload a test CSV.")
-    #st.stop()
+    st.stop()
 
 st.sidebar.link_button(
     label="View GitHub Repo",
@@ -51,7 +51,7 @@ st.sidebar.link_button(
 )
 
 st.sidebar.markdown("---")
-st.sidebar.caption("👨‍💻 **Student:** Subhajit Saha  \n🆔 **BITS ID:** 2026AJ05497  \n🏛️ **BITS Pilani (WILP)**")
+st.sidebar.caption("👨‍💻 **Student:** Subhajit Saha  \n🏛️ **BITS Pilani (WILP)**")
 
 # Clean input columns
 test_df.columns = test_df.columns.str.strip().str.lower().str.replace(" ", "_")
