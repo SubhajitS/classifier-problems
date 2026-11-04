@@ -42,6 +42,8 @@ The objective of this project is to build a machine learning classification pipe
 
 ## f. Developer/ Evaluator notes
 
+**Streamlit link**: [classifier-problems-ml-assignment2](https://classifier-problems-ml-assignment2.streamlit.app/)
+
 **Teen_Mental_Health.csv**: Unstratified raw data from kaggle. Used during the training phase to produce [train_data_internal.csv](model/train_data_internal.csv) and [test_data.csv](/test_data.csv) for training and testing respectively.
 
 **test_data.csv**: Should be used to test the models in the Streamlit app
