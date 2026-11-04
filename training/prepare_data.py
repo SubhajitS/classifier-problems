@@ -8,7 +8,7 @@ from utils import TARGET_COL, LEAKAGE_COLS
 
 
 def prepare():
-    os.makedirs("../model", exist_ok=True)
+    os.makedirs("model", exist_ok=True)
 
     # 1. Load raw dataset
     df = pd.read_csv("Teen_Mental_Health.csv")

@@ -15,8 +15,8 @@ TARGET_COL = "digital_wellbeing_flag"
 LEAKAGE_COLS = []
 
 def load_preprocessor():
-    preprocessor = joblib.load("../model/preprocessor.joblib")
-    label_encoder = joblib.load("../model/label_encoder.joblib")
+    preprocessor = joblib.load("model/preprocessor.joblib")
+    label_encoder = joblib.load("model/label_encoder.joblib")
     return preprocessor, label_encoder
 
 def compute_metrics(y_true, y_pred, y_proba):

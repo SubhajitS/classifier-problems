@@ -7,7 +7,7 @@ from utils import load_preprocessor, compute_metrics, print_evaluation_summary, 
 def train():
     preprocessor, label_encoder = load_preprocessor()
 
-    train_df = pd.read_csv("../model/train_data_internal.csv")
+    train_df = pd.read_csv("model/train_data_internal.csv")
     test_df = pd.read_csv("test_data.csv")
 
     X_train = preprocessor.transform(train_df.drop(columns=[TARGET_COL]))
