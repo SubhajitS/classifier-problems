@@ -18,3 +18,24 @@ The objective of this project is to build a machine learning classification pipe
 ## c. Github Repository Link
 
 **Link:** [ML Assignment 2](https://github.com/SubhajitS/classifier-problems)
+
+## d. Models Used
+
+| ML Model Name | Accuracy | AUC | Precision | Recall | F1 | MCC |
+| :--- | :--- | :--- | :--- | :--- | :--- | :--- |
+| Logistic Regression | 0.8583 | 0.9525 | 0.8588 | 0.8583 | 0.8582 | 0.7327 |
+| Decision Tree | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 | 1.0000 |
+| KNN | 0.8292 | 0.9173 | 0.8361 | 0.8292 | 0.8181 | 0.6667 |
+| Naive Bayes | 0.4625 | 0.8403 | 0.6792 | 0.4625 | 0.4222 | 0.3489 |
+| Support Vector Machine | 0.8625 | 0.9668 | 0.8621 | 0.8625 | 0.8614 | 0.7397 |
+
+## e. Observations on Model Performance
+
+| ML Model Name | Observation about model performance                                                                                                                                                                                                                                |
+| :--- |:-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
+| **Logistic Regression** | Performed strongly (~85.8% accuracy), indicating that simple linear combinations of digital habits and sleep hours are highly predictive of the wellbeing status.                                                                                                  |
+| **Decision Tree** | Achieved a perfect 1.0000 across all metrics. Because this is a possible synthetic dataset. Which means the target was possibly generated using hard-coded threshold rules (if/else conditions), which the decision tree effortlessly and perfectly reconstructed. |
+| **KNN** | Scored decently (~82.9% accuracy) but struggled compared to linear models because distance-based nearest-neighbor voting blurs near the sharp threshold cutoff borders separating the classes.                                                                     |
+| **Naive Bayes** | Showed the poorest performance (~46.2% accuracy). The assumption of independent features completely failed here, as features like `sleep_hours`, `screen_time_before_sleep`, and `daily_social_media_hours` are highly correlated.                                 |
+| **Support Vector Machine** | Achieved the highest performance among non-tree models (~86.2% accuracy, ~0.967 AUC). The RBF kernel successfully navigated the non-linear boundaries but could not draw the perfectly rectangular axis-aligned splits that exist in the synthetic dataset.        |
+| **Overall, Winner for your dataset?** | Although **Decision Tree** is the technical winner on this specific synthetic dataset. However, **Support Vector Machine (SVM)** is the most realistic and robust model for generalizing to messy, real-world survey data.                                         |
